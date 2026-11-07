@@ -94,6 +94,14 @@
     </nav>
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-mobile-photo"
+          src="img/Front_Page.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+          decoding="async"
+        >
         <div class="hero-content">
           <p class="hero-eyebrow">BORIS SPASSKI</p>
           <h1 id="hero-title">The virtuoso performer of <br /><em>Chopin.</em></h1>
@@ -105,8 +113,8 @@
             <a class="button button-light" href="artist.html"
               >Discover the artist <span>↗</span></a
             >
-            <a class="text-link light-link" href="contact.html"
-              >Booking enquiries <span>↗</span></a
+            <a class="button booking-button" href="contact.html" aria-label="Booking enquiries"
+              >Booking enquiries <span aria-hidden="true">↗</span></a
             >
           </div>
         </div>
