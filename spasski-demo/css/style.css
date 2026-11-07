@@ -3304,3 +3304,89 @@ h2 {
     line-height: 1.5;
   }
 }
+
+
+/* Homepage title: add a deliberate line break only on mobile. */
+.mobile-title-break { display: none; }
+
+/* Mobile menu: MENU label to the left, visible hamburger bars to the right. */
+@media (max-width: 1024px) {
+  .site-header .menu-toggle {
+    display: block !important;
+    position: relative !important;
+    width: 100px !important;
+    min-width: 100px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+  .site-header .menu-toggle::before {
+    content: "MENU" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 16px !important;
+    width: auto !important;
+    color: var(--paper) !important;
+    font: 600 9px/1 var(--sans) !important;
+    letter-spacing: 0.16em !important;
+    white-space: nowrap !important;
+  }
+  .site-header .menu-toggle span { display: none !important; }
+  .site-header .menu-toggle::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 25px;
+    height: 2px;
+    background: var(--paper);
+    box-shadow: 0 7px 0 var(--paper), 0 14px 0 var(--paper);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Smaller mobile hero type and requested two-line phrase. */
+@media (max-width: 760px) {
+  .home-page .mobile-title-break { display: block; }
+  .home-page .hero-eyebrow {
+    font-size: clamp(24px, 6.8vw, 30px) !important;
+    line-height: 1.08 !important;
+    margin-bottom: 9px !important;
+  }
+  .home-page .hero h1 {
+    font-size: clamp(25px, 6.8vw, 32px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+  }
+  .home-page .hero-intro {
+    font-size: clamp(11px, 3vw, 12.5px) !important;
+    line-height: 1.48 !important;
+    margin: 13px 0 17px !important;
+  }
+  .home-page .hero-content {
+    padding-top: 88px;
+    padding-bottom: 108px;
+  }
+  .home-page .hero-actions > a {
+    min-height: 43px;
+    padding: 10px 13px;
+    font-size: 8px;
+  }
+}
+@media (max-width: 520px) {
+  .home-page .hero-eyebrow {
+    font-size: clamp(22px, 6.4vw, 27px) !important;
+  }
+  .home-page .hero h1 {
+    font-size: clamp(23px, 6.5vw, 28px) !important;
+    line-height: 1.12 !important;
+  }
+  .home-page .hero-intro {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+  }
+  .home-page .hero-content { padding: 84px 18px 104px; }
+}
