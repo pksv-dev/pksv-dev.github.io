@@ -2859,3 +2859,377 @@ h2 {
   border-color: var(--champagne);
   background: var(--champagne);
 }
+
+
+/* =========================================================
+   FINAL MOBILE NAVIGATION AND HERO BEHAVIOUR
+   ========================================================= */
+
+/* Mobile/tablet header: show an obvious MENU control, not just language labels. */
+@media (max-width: 1024px) {
+  .site-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002 !important;
+    width: 100%;
+    min-height: 72px;
+    padding: 0 20px;
+    background: rgba(23, 25, 27, 0.96);
+    border-bottom: 1px solid rgba(242, 239, 232, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .site-header .desktop-nav {
+    display: none !important;
+  }
+
+  /* The language choices remain available inside the opened menu panel. */
+  .site-header .header-tools .language-switch {
+    display: none !important;
+  }
+
+  .site-header .header-tools {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    gap: 0;
+  }
+
+  .site-header .menu-toggle {
+    display: block !important;
+    position: relative;
+    z-index: 1004;
+    width: 76px;
+    height: 42px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: var(--paper);
+    cursor: pointer;
+  }
+
+  .site-header .menu-toggle::before {
+    content: "MENU";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    color: var(--paper);
+    font: 600 9px/1 var(--sans);
+    letter-spacing: 0.16em;
+  }
+
+  .site-header .menu-toggle span {
+    position: absolute;
+    right: 1px;
+    display: block;
+    width: 25px;
+    height: 1px;
+    margin: 0;
+    background: var(--paper);
+  }
+
+  .site-header .menu-toggle span:first-child {
+    top: 15px;
+  }
+
+  .site-header .menu-toggle span:last-child {
+    top: 24px;
+  }
+
+  .site-header .menu-toggle:focus-visible {
+    outline: 2px solid var(--champagne);
+    outline-offset: 3px;
+  }
+
+  /* Opened navigation sits directly below the fixed header. */
+  .mobile-nav {
+    position: fixed !important;
+    z-index: 1001 !important;
+    top: 72px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-y: auto;
+    padding: 15px 26px 32px;
+    background: rgba(23, 25, 27, 0.985);
+    color: var(--paper);
+    border-top: 1px solid rgba(242, 239, 232, 0.12);
+  }
+
+  .mobile-nav:not([hidden]) {
+    display: flex !important;
+  }
+
+  .mobile-nav > a {
+    display: flex;
+    align-items: center;
+    min-height: 55px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(242, 239, 232, 0.13);
+    color: var(--paper);
+    font: 400 25px/1.2 var(--serif);
+  }
+
+  .mobile-nav > a:hover,
+  .mobile-nav > a:focus-visible,
+  .mobile-nav > a[aria-current="page"] {
+    color: var(--champagne);
+  }
+
+  .mobile-nav .mobile-home-link {
+    color: var(--champagne);
+  }
+
+  .mobile-nav .mobile-languages {
+    margin-top: auto;
+    padding-top: 28px;
+    color: var(--champagne);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    min-height: 68px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .site-header .menu-toggle {
+    height: 40px;
+  }
+  .mobile-nav {
+    top: 68px !important;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+/* HOMEPAGE:
+   A single fixed background photo sits behind the content. The separate inline
+   image is intentionally disabled so there can be no doubled/scrolling photo. */
+.hero-mobile-photo {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .home-backdrop {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .home-backdrop-image {
+    position: absolute;
+    inset: 0;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-color: #17191b;
+    transform: none !important;
+    filter: none;
+  }
+
+  /* A gentle overlay keeps the text readable without hiding the photograph. */
+  .home-backdrop-shade {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(12, 14, 16, 0.12) 0%,
+      rgba(12, 14, 16, 0.18) 34%,
+      rgba(12, 14, 16, 0.68) 72%,
+      rgba(12, 14, 16, 0.82) 100%
+    ) !important;
+    pointer-events: none;
+  }
+
+  .home-page .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    min-height: max(100svh, 690px);
+    overflow: visible;
+    background: transparent;
+  }
+
+  .home-page .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 92px 20px 118px;
+    text-align: right;
+  }
+
+  .hero-eyebrow {
+    margin: 0 0 13px;
+    font-size: clamp(32px, 8.8vw, 45px);
+    line-height: 1.12;
+  }
+
+  .home-page .hero h1 {
+    font-size: clamp(34px, 8.9vw, 49px);
+    line-height: 1.08;
+  }
+
+  .hero-intro {
+    margin: 18px 0 24px;
+    font-size: clamp(13px, 3.7vw, 16px);
+    line-height: 1.58;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .hero-actions > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100%, 246px);
+    min-height: 47px;
+    margin: 0;
+    padding: 12px 15px;
+    gap: 12px;
+    position: relative;
+    z-index: 4;
+    pointer-events: auto;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .home-page .hero-actions .booking-button {
+    color: var(--paper);
+    border: 1px solid rgba(242, 239, 232, 0.72);
+    background: rgba(23, 25, 27, 0.32);
+  }
+
+  .home-page .hero-actions .booking-button:hover,
+  .home-page .hero-actions .booking-button:focus-visible {
+    color: var(--ink);
+    border-color: var(--champagne);
+    background: var(--champagne);
+  }
+
+  .home-page .hero-footer {
+    position: absolute;
+    z-index: 5;
+    bottom: 22px;
+    left: 20px;
+    right: 20px;
+    font-size: 7px;
+  }
+
+  .home-page .home-overview {
+    position: relative;
+    z-index: 2;
+    margin-top: -24px;
+    background: transparent !important;
+  }
+}
+
+/* BIO PAGE:
+   The fixed mobile menu occupies 68–72px at the top. Start the portrait below it. */
+@media (max-width: 760px) {
+  .bio-page:not(.contact-page) .bio-portrait {
+    position: relative;
+    top: auto;
+    margin-top: 72px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bio-page:not(.contact-page) .bio-portrait {
+    margin-top: 68px;
+  }
+}
+
+
+/* Homepage desktop hero: restore clear vertical rhythm and left-aligned review text. */
+@media (min-width: 761px) {
+  .home-page .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    z-index: 3;
+    width: min(850px, 100%);
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .home-page .hero-eyebrow,
+  .home-page .hero h1 {
+    text-align: right;
+  }
+
+  .home-page .hero-intro {
+    display: block;
+    position: relative;
+    z-index: 3;
+    width: min(100%, 560px);
+    max-width: 560px;
+    margin: 28px 0 34px;
+    align-self: flex-start;
+    text-align: left;
+    line-height: 1.65;
+  }
+
+  .home-page .hero-actions {
+    display: flex;
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-self: stretch;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+    clear: both;
+  }
+
+  .home-page .hero-actions > a {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: auto;
+  }
+}
