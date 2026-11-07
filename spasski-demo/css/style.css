@@ -3233,3 +3233,74 @@ h2 {
     pointer-events: auto;
   }
 }
+
+
+/* Final mobile refinements: separate MENU label, portrait photo offset and smaller hero type. */
+
+/* Keep the MENU label clearly to the left of the hamburger bars. */
+@media (max-width: 1024px) {
+  .site-header .menu-toggle {
+    width: 100px !important;
+    min-width: 100px;
+  }
+
+  .site-header .menu-toggle::before {
+    left: 0 !important;
+    right: auto !important;
+    top: 16px;
+    width: 43px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .site-header .menu-toggle span {
+    right: 0 !important;
+    left: auto !important;
+    width: 25px;
+  }
+}
+
+/* In portrait phone orientation, move the fixed photo below the fixed header.
+   Landscape keeps the existing full-width photo position. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .home-page .home-backdrop-image {
+    background-position: center 68px !important;
+  }
+}
+
+/* Reduce the homepage hero typography on phones while keeping the same alignment. */
+@media (max-width: 760px) {
+  .home-page .hero-eyebrow {
+    font-size: clamp(28px, 7.4vw, 36px) !important;
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+
+  .home-page .hero h1 {
+    font-size: clamp(29px, 7.2vw, 39px) !important;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .home-page .hero-intro {
+    font-size: clamp(12px, 3.25vw, 14px) !important;
+    line-height: 1.55;
+    margin: 15px 0 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-page .hero-eyebrow {
+    font-size: clamp(26px, 7.2vw, 32px) !important;
+  }
+
+  .home-page .hero h1 {
+    font-size: clamp(27px, 7.4vw, 34px) !important;
+    line-height: 1.12;
+  }
+
+  .home-page .hero-intro {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+}
